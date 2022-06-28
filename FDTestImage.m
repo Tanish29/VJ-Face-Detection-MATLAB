@@ -6,8 +6,8 @@ clc
 %    load('ENSClassifier.mat');
 %end
 
-fields = dir('C:\Users\bhatt\OneDrive\Documents\Tanish\Education\Free Time Projects\Face Detection MATLAB\Dataset\test\All');
-addpath('C:\Users\bhatt\OneDrive\Documents\Tanish\Education\Free Time Projects\Face Detection MATLAB\Dataset\test\All');
+fields = dir('C:\Users\bhatt\OneDrive\Documents\Tanish\Education\Free Time Projects\Face Detection MATLAB\Dataset\test\Test_All');
+addpath('C:\Users\bhatt\OneDrive\Documents\Tanish\Education\Free Time Projects\Face Detection MATLAB\Dataset\test\Test_All');
 [totalimages, ~] = size(fields);
 tf = 0;
 tn = 0;
