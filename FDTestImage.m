@@ -6,11 +6,12 @@ clc
 %    load('ENSClassifier.mat');
 %end
 
-fields = dir('C:\Users\bhatt\OneDrive\Documents\Tanish\Education\Free Time Projects\Face Detection MATLAB\Dataset\test\face');
-addpath('C:\Users\bhatt\OneDrive\Documents\Tanish\Education\Free Time Projects\Face Detection MATLAB\Dataset\test\face');
+fields = dir('C:\Users\bhatt\OneDrive\Documents\Tanish\Education\Free Time Projects\Face Detection MATLAB\Dataset\test\All');
+addpath('C:\Users\bhatt\OneDrive\Documents\Tanish\Education\Free Time Projects\Face Detection MATLAB\Dataset\test\All');
 [totalimages, ~] = size(fields);
-f = 0;
-for i = 1:472
+tf = 0;
+tn = 0;
+for i = 1:200
     Features = single(zeros(1,162336));
     imagename = fields(i+2).name;
     testreadim = imread(imagename);
@@ -18,17 +19,22 @@ for i = 1:472
     testintim = single(IntegralImage(testnewim));
     %[Features,tfbounds] = ReqVar(Features,testintim,1,CR1);
     Features = HaarFeatures(Features,testintim,1);
-    numcrs = 1;
+    numcrs = 2;
     imshow(testreadim)
     for j = 1:numcrs
         FClassifier = LoadClass(j);
         if(predict(FClassifier,Features(1,AllCR{j})) ~= "face")
-            disp("not a face")
-            break;
+            if mod(i,2) == 1
+                tn = tn+1;
+                disp("not a face")
+                break;
+            end
         end
         if j == numcrs
-            f = f+1;
-            disp("face")
+            if mod(i,2) == 0
+                tf = tf+1;
+                disp("face")
+            end
         end 
     end
 end
