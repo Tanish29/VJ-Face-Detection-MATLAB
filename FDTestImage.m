@@ -11,7 +11,7 @@ addpath('C:\Users\bhatt\OneDrive\Documents\Tanish\Education\Free Time Projects\F
 [totalimages, ~] = size(fields);
 tf = 0;
 tn = 0;
-for i = 1:200
+for i = 1:300
     Features = single(zeros(1,162336));
     imagename = fields(i+2).name;
     testreadim = imread(imagename);

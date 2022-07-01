@@ -10,7 +10,7 @@ if ~exist('Feature','var')
     Feature = Feature.outputarray;
 end
 
-fields = dir('C:\Users\bhatt\OneDrive\Documents\Tanish\Education\Free Time Projects\Face Detection MATLAB\Dataset\train\All');
+fields = dir('C:\Users\bhatt\OneDrive\Documents\Tanish\Education\Free Time Projects\Face Detection MATLAB\Dataset\train\Train_All');
 
 % getting all the image names and saving it in an array
 Imagenames = strings(length(fields)-2,1);
@@ -104,7 +104,7 @@ m = 3865;
 for k = 1:38
      tic;
      %FClassifier = fitcensemble(Feature(6350:-1:m,AllCR{k}),ForNF(6350:-1:m,1),'Method','AdaBoostM1','NumLearningCycles',100,'Learners','Tree','LearnRate',1);
-     FClassifier = fitensemble(Feature(6335:-1:m,AllCR{k}),ForNF(6335:-1:m,1),'AdaBoostM1',100,'Tree','Learnrate',1);
+     FClassifier = fitensemble(Feature(6335:-1:m,AllCR{k}),ForNF(6335:-1:m,1),'AdaBoostM1',100,'Tree','Learnrate',1, 'cost', [0, 1 ; 1, 0]);
      time(k) = toc;  
      filename = strcat("fit",savename(k));
      save(filename,'FClassifier');
