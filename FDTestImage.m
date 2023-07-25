@@ -38,7 +38,8 @@ for i = 1:300
         end 
     end
 end
-    
+% print the accuracy
+fprintf("accuracy = %d", (tf+tn)/i)
             
             
             
